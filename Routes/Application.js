@@ -8,6 +8,11 @@ router.post("/", async (req, res) => {
       email: req.body.email,
       phone: req.body.phone,
       city: req.body.city,
+      ewb: req.body.ewb,
+      eab: req.body.eab,
+      exp: req.body.exp,
+      dob: req.body.dob,
+      salary: req.body.salary,
       jid: req.body.jid,
       resume: req.body.resume,
     });
@@ -19,26 +24,33 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.get("/", async (req, res) => {
-  const username = req.query.user;
-  const catName = req.query.cat;
+router.get("/check/:id", async (req, res) => {
   try {
-    let posts;
-    if (username) {
-      posts = await Post.find({ username });
-    } else if (catName) {
-      posts = await Post.find({
-        categories: {
-          $in: [catName],
-        },
-      });
-    } else {
-      posts = await Post.find();
+    const findApplication = await Applications.findById(
+      req.params.id
+    )
+    if (findApplication) {
+      res.status(200).json(findApplication)
     }
-    res.status(200).json(posts);
   } catch (err) {
-    res.status(500).json(err);
+
   }
 });
+
+
+
+
+// Get all applications
+
+router.get("/view-all", async (req, res) => {
+  let posts;
+  posts = await Applications.find();
+
+
+  res.status(200).json(posts);
+  console.log(posts);
+
+});
+
 
 module.exports = router;

@@ -14,6 +14,30 @@ const ApplicationSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    dob: {
+      type: String,
+      required: true,
+    },
+    status: {
+      type: String,
+      default: "Recieved",
+    },
+    ewb: {
+      type: String,
+      required: true,
+    },
+    exp: {
+      type: String,
+      required: true,
+    },
+    eab: {
+      type: String,
+      required: true,
+    },
+    salary: {
+      type: String,
+      required: true,
+    },
     city: {
       type: String,
       required: true,

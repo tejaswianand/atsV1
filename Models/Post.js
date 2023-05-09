@@ -22,6 +22,10 @@ const PostSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    jid: {
+      type: String,
+      required: true,
+    },
     desc: {
       type: String,
       required: true,
